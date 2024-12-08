@@ -3,17 +3,31 @@ import reactLogo from "../assets/react.svg";
 import "../App.css";
 import { Contador } from "../components/contador";
 import { ColoContainer } from "../components/coloContainer";
+import { Footer } from "../components/footer";
+import { useLocation, useNavigate } from "react-router";
+import { useEffect } from "react";
 
 const Home = () => {
+  const { state } = useLocation();
+  const navigate = useNavigate();
+  useEffect(() => {
+    console.log(state);
+
+    if (state == null || typeof state !== "object") {
+      navigate("/login");
+    }
+  }, []);
+
   return (
-    <ColoContainer>
-      <ViteComp />
+    <>
+      <ViteComp user={state} />
       <Contador />
-    </ColoContainer>
+      <Footer />
+    </>
   );
 };
 
-const ViteComp = ({ user = { userName: "valor defecto" } }) => {
+const ViteComp = ({ user }) => {
   return (
     <>
       <div>
@@ -21,7 +35,9 @@ const ViteComp = ({ user = { userName: "valor defecto" } }) => {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + {user.userName}</h1>
+      <h1>
+        Vite + {user && typeof user == "object" ? user.userName : "no user"}
+      </h1>
     </>
   );
 };

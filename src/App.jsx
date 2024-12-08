@@ -1,11 +1,16 @@
 /* eslint-disable react/prop-types */
 
 import "./App.css";
-import AbautUs from "./pages/abaut";
-import Home from "./pages/home";
+
+import { BrowserRouter } from "react-router-dom";
+import Navigator from "./navigation/navigator";
 
 const App = () => {
-  return <Home />;
+  return (
+    <BrowserRouter>
+      <Navigator />
+    </BrowserRouter>
+  );
 };
 
 export default App;
