@@ -2,10 +2,10 @@
 
 import "./App.css";
 import AbautUs from "./pages/abaut";
-import Home from "./pages/home";
+import NewHome from "./pages/newHome";
 
 const App = () => {
-  return <Home />;
+  return <NewHome />;
 };
 
 export default App;
